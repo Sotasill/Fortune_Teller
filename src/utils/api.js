@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_KEY =
-  "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"; // Замените на ваш API ключ
+ Замените на ваш API ключ
 
 export const fetchPredictionFromAI = async (cards) => {
   const prompt = `На основе следующих карт Таро: ${cards
