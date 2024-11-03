@@ -1,6 +1,6 @@
 import axios from "axios";
 
- Замените на ваш API ключ
+
 
 export const fetchPredictionFromAI = async (cards) => {
   const prompt = `На основе следующих карт Таро: ${cards
@@ -17,7 +17,7 @@ export const fetchPredictionFromAI = async (cards) => {
       },
       {
         headers: {
-          Authorization: `Bearer ${API_KEY}`,
+          
           "Content-Type": "application/json",
         },
       }
