@@ -1,16 +1,25 @@
 
 import Modal from "react-modal";
 import { useLanguage } from "../../context/LanguageContext";
+import { useEffect } from "react";
 
 Modal.setAppElement("#root");
 
 const LanguageModal = ({ isOpen, onRequestClose }) => {
   const { language, setLanguage } = useLanguage();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onRequestClose(); // Закрыть модальное окно
-  };
+   const handleSubmit = (e) => {
+     e.preventDefault();
+     setLanguage(language);
+     localStorage.setItem("language", language); // Сохраняем язык в localStorage
+     onRequestClose();
+   };
+
+  useEffect(() => {
+    if (!isOpen) {
+      setLanguage("en");
+    }
+  }, [isOpen]);
 
   return (
     <Modal
@@ -25,7 +34,7 @@ const LanguageModal = ({ isOpen, onRequestClose }) => {
             type="radio"
             value="en"
             checked={language === "en"}
-            onChange={() => setLanguage("en")} // Установить язык на английский
+            onChange={() => setLanguage("en")}
           />
           English
         </label>
@@ -34,7 +43,7 @@ const LanguageModal = ({ isOpen, onRequestClose }) => {
             type="radio"
             value="uk"
             checked={language === "uk"}
-            onChange={() => setLanguage("uk")} // Установить язык на украинский
+            onChange={() => setLanguage("uk")}
           />
           Українська
         </label>

@@ -72,19 +72,18 @@ function HeaderBar() {
               X
             </a>
           </li>
+          <li className={css.LanguageSwitcher}>
+            <label className={css.switch}>
+              <input
+                type="checkbox"
+                checked={language === "uk"}
+                onChange={handleLanguageChange}
+              />
+              <span className={`${css.slider} ${css.round}`}></span>
+            </label>
+            <span>{language === "en" ? "ENG" : "UKR"}</span>
+          </li>
         </ul>
-
-        <div className={css.LanguageSwitcher}>
-          <label className={css.switch}>
-            <input
-              type="checkbox"
-              checked={language === "uk"}
-              onChange={handleLanguageChange}
-            />
-            <span className={`${css.slider} ${css.round}`}></span>
-          </label>
-          <span>{language === "en" ? "ENG" : "UKR"}</span>
-        </div>
       </nav>
     </div>
   );
