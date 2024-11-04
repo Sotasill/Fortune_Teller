@@ -1,6 +1,6 @@
 import axios from "axios";
 
-key
+
 
 export const fetchPredictionFromAI = async (cards) => {
   const prompt = `На основе следующих карт Таро: ${cards

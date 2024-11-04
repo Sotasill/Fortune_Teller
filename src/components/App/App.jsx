@@ -1,12 +1,21 @@
-import CardList from "../CardList/CardList";
-import css from './App.module.css'
+import { Route, Routes } from "react-router-dom";
+
+
+import HomePage from "../../Pages/HomePage/HomePage";
+import About from "../../Pages/About/About";
+import Login from "../../Pages/LoginPage/LoginPage";
+
+
 
 const App = () => {
   return (
-    <div className={css.AppWrapper}>
-      <h1>Гадание на картах Таро</h1>
-      <CardList />
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </>
   );
 };
 
