@@ -5,6 +5,7 @@ import LanguageModal from "../../components/LanguageModal/LanduageModal"
 import { useLanguage } from "../../context/LanguageContext"
 
 import PageNavigation from "../../components/PageNavigation/PageNavigation"
+import HomePageNavigation from "../../components/HomePageNavigation/HomePageNavigation"
 
 
 
@@ -30,7 +31,8 @@ function HomePage() {
     <div>
       <HeaderBar />
       <h1>{translate("welcome")}</h1> {/* Используем translate для заголовка */}
-      <PageNavigation/>
+      <PageNavigation />
+      <HomePageNavigation />
       <LanguageModal isOpen={isModalOpen} onRequestClose={handleModalClose} />
     </div>
   );

@@ -3,10 +3,11 @@ import translations from "./translation"; // Импортируйте перев
 
 const LanguageContext = createContext();
 
+// Компонент провайдера
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState(
     localStorage.getItem("language") || "en"
-  ); // Получаем язык из localStorage
+  );
 
   const translate = (key) => {
     return translations[language][key] || key; // Возвращает ключ, если перевод не найден
@@ -26,4 +27,6 @@ export const LanguageProvider = ({ children }) => {
   );
 };
 
+// Экспортируем контекст
 export const useLanguage = () => useContext(LanguageContext);
+export { LanguageContext };
