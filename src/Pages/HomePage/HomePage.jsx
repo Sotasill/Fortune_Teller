@@ -37,7 +37,7 @@ function HomePage() {
         <li>
           <a href="">
             <img
-              src="/src/assets/images/backgrounds/Taro/Tarot-Fortune.jpg"
+              src="/assets/images/backgrounds/Taro/Tarot-Fortune.jpg"
               alt=""
             />
           </a>
@@ -45,7 +45,7 @@ function HomePage() {
         <li>
           <a href="">
             <img
-              src="/src/assets/images/backgrounds/Taro/Random-Card.jpg"
+              src="/assets/images/backgrounds/Taro/Random-Card.jpg"
               alt=""
             />
           </a>
