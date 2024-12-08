@@ -2,7 +2,7 @@
 @import 'modern-normalize';
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -13,7 +13,21 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
+  font-family:Uncial Antiqua, sans-serif ;
+  font-size: 16px;
+  font-weight: 400;
+  --main-color: #D4D6E9;
+  --white-color:#FFFFFF99;
+  --violet-color:#625C99 ; 
+  --orange-color:#FF8E46;
+  --red-color:#C52A09;
+  background-color:#D4D6E9 ;
+}
+
+.container {
+  max-width: 1440px;
+  padding: 72px 30px;
 }
 
 a {

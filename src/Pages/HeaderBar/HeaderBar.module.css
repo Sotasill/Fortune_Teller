@@ -19,6 +19,31 @@
     
 }
 
+.SvgIcon {
+  fill: #2F2C3F;
+  transition: transform cubic-bezier(0.075, 0.82, 0.165, 1), opacity 0.3s ease;
+}
+
+
+
+.hoverImage {
+  transition: opacity 0.3s ease, transform cubic-bezier(0.075, 0.82, 0.165, 1); /* Плавное появление изображения */
+}
+
+.link:hover .SvgIcon {
+  transform: scale(1.1); /* Увеличение SVG на 10% при наведении */
+  opacity: 0.5; /* Полупрозрачность SVG при наведении */
+}
+
+.link:hover .hoverImage {
+  transform: scale(1); /* Возвращение к нормальному размеру при наведении */
+  opacity: 1; /* Полная видимость при наведении */
+}
+
+
+
+
+
 
 .NavAbout {
     display: flex;

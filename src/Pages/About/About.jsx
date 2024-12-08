@@ -1,6 +1,7 @@
 import HeaderBar from "../HeaderBar/HeaderBar"
 import css from "./About.module.css"
 
+
 function About() {
   return (
     <div>

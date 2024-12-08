@@ -2,11 +2,13 @@ import HeaderBar from "../HeaderBar/HeaderBar"
 import { useState} from "react"
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import css from "./HomePage.module.css"
 
 
 import LanguageModal from "../../components/LanguageModal/LanduageModal"
 
-import PageNavigation from "../../components/PageNavigation/PageNavigation"
+
+import CardSearch from "../../components/CardSearch/CardSearch";
 import Footer from "../../components/Footer/Footer";
 
 
@@ -29,10 +31,28 @@ function HomePage() {
     <div>
       <HeaderBar />
       <h1>{t("welcome")}</h1>
-      <PageNavigation />
       
+      <CardSearch />
+      <ul className={css.mainWrapper}>
+        <li>
+          <a href="">
+            <img
+              src="/src/assets/img/backgrounds/Taro/Tarot-Fortune.jpg"
+              alt=""
+            />
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <img
+              src="/src/assets/img/backgrounds/Taro/Random-Card.jpg"
+              alt=""
+            />
+          </a>
+        </li>
+      </ul>
       <LanguageModal isOpen={isModalOpen} onRequestClose={handleModalClose} />
-      <Footer/>
+      <Footer />
     </div>
   );
 }
