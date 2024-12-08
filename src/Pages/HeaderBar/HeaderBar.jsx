@@ -77,11 +77,11 @@ function HeaderBar() {
             >
               {!hoveredItems.facebook ? (
                 <svg className={css.SvgIcon} width={24}>
-                  <use href="src/assets/img/symbol-defs.svg#icon-FB"></use>
+                  <use href="src/assets/images/symbol-defs.svg#icon-FB"></use>
                 </svg>
               ) : (
                 <img
-                  src="/src/assets/img/Taro/Property1=v1_hover.png"
+                  src="/src/assets/images/Taro/Property1=v1_hover.png"
                   alt="Facebook Hover"
                   className={css.hoverImage}
                 />
@@ -101,11 +101,11 @@ function HeaderBar() {
             >
               {!hoveredItems.instagram ? (
                 <svg className={css.SvgIcon} width={24}>
-                  <use href="src/assets/img/symbol-defs.svg#icon-insta"></use>
+                  <use href="src/assets/images/symbol-defs.svg#icon-insta"></use>
                 </svg>
               ) : (
                 <img
-                  src="/src/assets/img/Taro/Property1=v2_hover.png"
+                  src="/src/assets/images/Taro/Property1=v2_hover.png"
                   alt="Instagram Hover"
                   className={css.hoverImage}
                 />
@@ -125,11 +125,11 @@ function HeaderBar() {
             >
               {!hoveredItems.twitter ? (
                 <svg className={css.SvgIcon} width={24}>
-                  <use href="src/assets/img/symbol-defs.svg#icon-X"></use>
+                  <use href="src/assets/images/symbol-defs.svg#icon-X"></use>
                 </svg>
               ) : (
                 <img
-                  src="/src/assets/img/Taro/Property1=v3_hover.png"
+                  src="/src/assets/images/Taro/Property1=v3_hover.png"
                   alt="Twitter Hover"
                   className={css.hoverImage}
                 />

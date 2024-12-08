@@ -31,13 +31,13 @@ function HomePage() {
     <div>
       <HeaderBar />
       <h1>{t("welcome")}</h1>
-      
+
       <CardSearch />
       <ul className={css.mainWrapper}>
         <li>
           <a href="">
             <img
-              src="/src/assets/img/backgrounds/Taro/Tarot-Fortune.jpg"
+              src="/src/assets/images/backgrounds/Taro/Tarot-Fortune.jpg"
               alt=""
             />
           </a>
@@ -45,7 +45,7 @@ function HomePage() {
         <li>
           <a href="">
             <img
-              src="/src/assets/img/backgrounds/Taro/Random-Card.jpg"
+              src="/src/assets/images/backgrounds/Taro/Random-Card.jpg"
               alt=""
             />
           </a>
