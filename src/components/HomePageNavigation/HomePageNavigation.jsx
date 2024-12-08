@@ -1,20 +1,19 @@
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import css from "./HomePageNavigation.module.css";
-import { useContext } from "react";
-import { LanguageContext } from "../../context/LanguageContext";
 
-const PageNavigation = () => {
-  const { translate } = useContext(LanguageContext);
+const HomePageNavigation = () => {
+  const { t } = useTranslation();
+
   return (
     <nav className={css.nav}>
       <ul className={css.navList}>
-        <li className={css.navItem}>
+        <li>
           <NavLink
             to="/tarot-fortune-teller"
             className={({ isActive }) => (isActive ? css.active : "")}
           >
-            <img className={css.navImage} src="/public/cards/c02.jpg" alt="" />
-            {translate("fortunTeller")}
+            {t("fortunTeller")}
           </NavLink>
         </li>
         <li>
@@ -22,22 +21,20 @@ const PageNavigation = () => {
             to="/random-card-prediction"
             className={({ isActive }) => (isActive ? css.active : "")}
           >
-            <img className={css.navImage} src="/public/cards/c02.jpg" alt="" />
-            {translate("randomCard")}
+            {t("randomCard")}
           </NavLink>
         </li>
         <li>
-          <NavLink 
+          <NavLink
             to="/card-meaning"
             className={({ isActive }) => (isActive ? css.active : "")}
           >
-            <img className={css.navImage} src="/public/cards/c02.jpg" alt="" />
-            {translate("cardMeaning")}
-          </NavLink >
+            {t("cardMeaning")}
+          </NavLink>
         </li>
       </ul>
     </nav>
   );
 };
 
-export default PageNavigation;
+export default HomePageNavigation;

@@ -1,39 +1,38 @@
 import HeaderBar from "../HeaderBar/HeaderBar"
-import { useState, useEffect } from "react"
+import { useState} from "react"
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
 
 import LanguageModal from "../../components/LanguageModal/LanduageModal"
-import { useLanguage } from "../../context/LanguageContext"
 
 import PageNavigation from "../../components/PageNavigation/PageNavigation"
-import HomePageNavigation from "../../components/HomePageNavigation/HomePageNavigation"
+import Footer from "../../components/Footer/Footer";
+
 
 
 
 
 function HomePage() {
-  const [isModalOpen, setIsModalOpen] = useState(true);
-  const { translate } = useLanguage(); // Получаем только translate из контекста
+  const { t } = useTranslation();
+;
+  const currentLanguage = useSelector((state) => state.language.currentLanguage);
+  const [isModalOpen, setIsModalOpen] = useState(!currentLanguage);
 
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
 
-   useEffect(() => {
-     // Проверяем, если язык не выбран, открываем модальное окно
-     if (!localStorage.getItem("language")) {
-       setIsModalOpen(true);
-     } else {
-       setIsModalOpen(false); // Если язык есть, модальное окно не открываем
-     }
-   }, []);
+ 
 
   return (
     <div>
       <HeaderBar />
-      <h1>{translate("welcome")}</h1> {/* Используем translate для заголовка */}
+      <h1>{t("welcome")}</h1>
       <PageNavigation />
-      <HomePageNavigation />
+      
       <LanguageModal isOpen={isModalOpen} onRequestClose={handleModalClose} />
+      <Footer/>
     </div>
   );
 }

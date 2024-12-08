@@ -1,16 +1,19 @@
+import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
+import { setLanguage } from '../../redux/language/languageSlice'; // Импортируем действие для изменения языка
 
 import { NavLink } from "react-router-dom";
-import { useLanguage } from "../../context/LanguageContext";
 
 import css from './HeaderBar.module.css'
 
 function HeaderBar() {
-  const { translate, language, setLanguage } = useLanguage();
-  const handleLanguageChange = (e) => {
-    const newLanguage = e.target.checked ? "uk" : "en"; // Переключаем язык
-    setLanguage(newLanguage);
-  };
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
 
+  const handleLanguageChange = (event) => {
+    const selectedLanguage = event.target.checked ? 'uk' : 'en'; // Определяем язык по состоянию чекбокса
+    dispatch(setLanguage(selectedLanguage)); // Вызываем действие для изменения языка
+  };
 
   return (
     <div className={css.HeaderWrapper}>
@@ -21,7 +24,7 @@ function HeaderBar() {
               to="/"
               className={({ isActive }) => (isActive ? css.active : "")}
             >
-              {translate("logo")}
+              {t("logo")}
             </NavLink>
           </li>
           <li>
@@ -29,7 +32,7 @@ function HeaderBar() {
               to="/about"
               className={({ isActive }) => (isActive ? css.active : "")}
             >
-              {translate("about")}
+              {t("about")}
             </NavLink>
           </li>
           <li>
@@ -37,7 +40,7 @@ function HeaderBar() {
               to="/login"
               className={({ isActive }) => (isActive ? css.active : "")}
             >
-              {translate("login")}
+              {t("login")}
             </NavLink>
           </li>
         </ul>
@@ -76,12 +79,11 @@ function HeaderBar() {
             <label className={css.switch}>
               <input
                 type="checkbox"
-                checked={language === "uk"}
                 onChange={handleLanguageChange}
               />
               <span className={`${css.slider} ${css.round}`}></span>
             </label>
-            <span>{language === "en" ? "ENG" : "UKR"}</span>
+            <span>{t("language")}</span>
           </li>
         </ul>
       </nav>

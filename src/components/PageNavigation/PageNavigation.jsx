@@ -1,11 +1,10 @@
 import { NavLink } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import css from "./PageNavigation.module.css";
-import { useContext } from "react";
-import { LanguageContext } from "../../context/LanguageContext";
 
 const PageNavigation = () => {
+  const { t } = useTranslation();
 
-  const { translate } = useContext(LanguageContext);
   return (
     <nav className={css.nav}>
       <ul className={css.navList}>
@@ -14,7 +13,7 @@ const PageNavigation = () => {
             to="/tarot-fortune-teller"
             className={({ isActive }) => (isActive ? css.active : "")}
           >
-            {translate("fortunTeller")}
+            {t("fortunTeller")}
           </NavLink>
         </li>
         <li>
@@ -22,7 +21,7 @@ const PageNavigation = () => {
             to="/random-card-prediction"
             className={({ isActive }) => (isActive ? css.active : "")}
           >
-            {translate("randomCard")}
+            {t("randomCard")}
           </NavLink>
         </li>
         <li>
@@ -30,7 +29,7 @@ const PageNavigation = () => {
             to="/card-meaning"
             className={({ isActive }) => (isActive ? css.active : "")}
           >
-            {translate("cardMeaning")}
+            {t("cardMeaning")}
           </NavLink>
         </li>
       </ul>

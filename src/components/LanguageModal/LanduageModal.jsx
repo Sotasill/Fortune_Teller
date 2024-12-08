@@ -1,25 +1,18 @@
-
 import Modal from "react-modal";
-import { useLanguage } from "../../context/LanguageContext";
-import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { setLanguage } from '../../redux/language/languageSlice'; // Импортируем действие для изменения языка
 
 Modal.setAppElement("#root");
 
 const LanguageModal = ({ isOpen, onRequestClose }) => {
-  const { language, setLanguage } = useLanguage();
+  const { i18n } = useTranslation();
+  const dispatch = useDispatch();
 
-   const handleSubmit = (e) => {
-     e.preventDefault();
-     setLanguage(language);
-     localStorage.setItem("language", language); // Сохраняем язык в localStorage
-     onRequestClose();
-   };
-
-  useEffect(() => {
-    if (!isOpen) {
-      setLanguage("en");
-    }
-  }, [isOpen]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onRequestClose();
+  };
 
   return (
     <Modal
@@ -33,8 +26,8 @@ const LanguageModal = ({ isOpen, onRequestClose }) => {
           <input
             type="radio"
             value="en"
-            checked={language === "en"}
-            onChange={() => setLanguage("en")}
+            checked={i18n.language === "en"}
+            onChange={() => dispatch(setLanguage("en"))}
           />
           English
         </label>
@@ -42,8 +35,8 @@ const LanguageModal = ({ isOpen, onRequestClose }) => {
           <input
             type="radio"
             value="uk"
-            checked={language === "uk"}
-            onChange={() => setLanguage("uk")}
+            checked={i18n.language === "uk"}
+            onChange={() => dispatch(setLanguage("uk"))}
           />
           Українська
         </label>

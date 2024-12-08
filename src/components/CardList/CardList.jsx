@@ -1,19 +1,18 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import cardData from "../../tarot-images.json";
-import Card from '../Card/Card'
-import css from './CardList.module.css'
+import Card from '../Card/Card';
+import css from './CardList.module.css';
 import { fetchPredictionFromAI } from "../../utils/api";
-import { LanguageContext } from "../../context/LanguageContext"; 
-
 
 const CardList = ({ numberOfCards = 3 }) => {
+  const { t } = useTranslation();
   const [cards, setCards] = useState([]);
   const [prediction, setPrediction] = useState("");
   const [showModal, setShowModal] = useState(numberOfCards > 1);
-  const { translate } = useContext(LanguageContext); // Убедитесь, что вы используете контекст
 
   const getRandomCards = (allCards, count) => {
-    const shuffled = allCards.sort(() => 0.5 - Math.random());
+    const shuffled = allCards.sort(() => Math.random() - 0.5);
     return shuffled.slice(0, count);
   };
 
@@ -23,7 +22,7 @@ const CardList = ({ numberOfCards = 3 }) => {
       setCards(randomCard);
       fetchPredictionFromAI(randomCard)
         .then((prediction) => setPrediction(prediction))
-        .catch((error) => console.error(error));
+        .catch((error) => console.error("Ошибка при получении предсказания:", error));
     }
   }, [numberOfCards]);
 
@@ -33,7 +32,7 @@ const CardList = ({ numberOfCards = 3 }) => {
     setShowModal(false); // Скрыть модальное окно после перемешивания
     fetchPredictionFromAI(randomCards)
       .then((prediction) => setPrediction(prediction))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error("Ошибка при получении предсказания:", error));
   };
 
   return (
@@ -41,10 +40,9 @@ const CardList = ({ numberOfCards = 3 }) => {
       {showModal && (
         <div className={css.Modal}>
           <div className={css.ModalContent}>
-            <h2>{translate("shuffleQuestion")}</h2>{" "}
-            {/* Используем ключ для перевода */}
+            <h2>{t("shuffleQuestion")}</h2>
             <button onClick={handleShuffle}>
-              {translate("shuffle")} {/* Используем ключ для перевода */}
+              {t("shuffle")}
             </button>
           </div>
         </div>
@@ -57,8 +55,7 @@ const CardList = ({ numberOfCards = 3 }) => {
             ))}
           </div>
           <div className="prediction">
-            <h2>{translate("prediction")}</h2>{" "}
-            {/* Используем ключ для перевода */}
+            <h2>{t("prediction")}</h2>
             <p>{prediction}</p>
           </div>
         </>

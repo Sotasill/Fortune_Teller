@@ -1,23 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import css from "./ActionButtons.module.css";
-import { useContext } from "react";
+import { useTranslation } from 'react-i18next';
 
-import { LanguageContext } from "../../context/LanguageContext"; 
 
 const ActionButtons = ({ onRefresh, isUserLoggedIn }) => {
   const navigate = useNavigate();
-  const { translate } = useContext(LanguageContext);
+  const { t } = useTranslation();
 
   return (
     <div className={css.buttonsWrapper}>
       <button onClick={() => navigate(-1)} className={css.button}>
-        {translate("goBack")}
+        {t("goBack")}
       </button>
       <button onClick={onRefresh} className={css.button}>
-        {translate("reload")}
+        {t("reload")}
       </button>
       <button disabled={!isUserLoggedIn} className={css.button}>
-        {translate("save")}
+        {t("save")}
       </button>
     </div>
   );
