@@ -42,7 +42,7 @@ function HeaderBar() {
               to="/"
               className={({ isActive }) => (isActive ? css.active : "")}
             >
-              <img src="/public/assets/images/Property1=Default.png" alt="" />
+              <img src="/public/logo.png" alt="" />
             </NavLink>
           </li>
           <li>
