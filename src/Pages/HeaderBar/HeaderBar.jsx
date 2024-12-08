@@ -15,6 +15,7 @@ function HeaderBar() {
     facebook: false,
     instagram: false,
     twitter: false,
+    logo: false,
   });
 
   // Обработка изменения языка
@@ -39,14 +40,6 @@ function HeaderBar() {
         <ul className={css.NavAbout}>
           <li>
             <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? css.active : "")}
-            >
-              <img src="/assets/images/logo.png" alt="" />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               to="/about"
               className={({ isActive }) => (isActive ? css.active : "")}
             >
@@ -59,6 +52,28 @@ function HeaderBar() {
               className={({ isActive }) => (isActive ? css.active : "")}
             >
               {t("login")}
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/signIn"
+              className={({ isActive }) => (isActive ? css.active : "")}
+            >
+              {t("signIn")}
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? css.active : "")}
+              onMouseEnter={() => handleMouseOver("logo")}
+              onMouseLeave={() => handleMouseOut("logo")}
+            >
+              {!hoveredItems.logo ? (
+                <img src="/assets/images/logo.png" alt="Logo" />
+              ) : (
+                <img src="/assets/images/logoHover.png" alt="Logo Hover" />
+              )}
             </NavLink>
           </li>
         </ul>
@@ -77,11 +92,11 @@ function HeaderBar() {
             >
               {!hoveredItems.facebook ? (
                 <svg className={css.SvgIcon} width={24}>
-                  <use href="src/assets/images/symbol-defs.svg#icon-FB"></use>
+                  <use href="/assets/images/symbol-defs.svg#icon-FB"></use>
                 </svg>
               ) : (
                 <img
-                  src="/src/assets/images/Taro/Property1=v1_hover.png"
+                  src="/assets/images/taro/Property1=v1_hover.png"
                   alt="Facebook Hover"
                   className={css.hoverImage}
                 />
@@ -101,11 +116,11 @@ function HeaderBar() {
             >
               {!hoveredItems.instagram ? (
                 <svg className={css.SvgIcon} width={24}>
-                  <use href="src/assets/images/symbol-defs.svg#icon-insta"></use>
+                  <use href="/assets/images/symbol-defs.svg#icon-insta"></use>
                 </svg>
               ) : (
                 <img
-                  src="/src/assets/images/Taro/Property1=v2_hover.png"
+                  src="/assets/images/taro/Property1=v2_hover.png"
                   alt="Instagram Hover"
                   className={css.hoverImage}
                 />
@@ -125,11 +140,11 @@ function HeaderBar() {
             >
               {!hoveredItems.twitter ? (
                 <svg className={css.SvgIcon} width={24}>
-                  <use href="src/assets/images/symbol-defs.svg#icon-X"></use>
+                  <use href="/assets/images/symbol-defs.svg#icon-X"></use>
                 </svg>
               ) : (
                 <img
-                  src="/src/assets/images/Taro/Property1=v3_hover.png"
+                  src="/assets/images/taro/Property1=v3_hover.png"
                   alt="Twitter Hover"
                   className={css.hoverImage}
                 />

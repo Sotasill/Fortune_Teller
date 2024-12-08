@@ -31,12 +31,12 @@
 }
 
 .link:hover .SvgIcon {
-  transform: scale(1.1); /* Увеличение SVG на 10% при наведении */
+  
   opacity: 0.5; /* Полупрозрачность SVG при наведении */
 }
 
 .link:hover .hoverImage {
-  transform: scale(1); /* Возвращение к нормальному размеру при наведении */
+  
   opacity: 1; /* Полная видимость при наведении */
 }
 

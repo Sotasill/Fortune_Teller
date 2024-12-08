@@ -18,6 +18,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signIn" element={<signIn />} />
         <Route path="/tarot-fortune-teller" element={<TarotFortuneTeller />} />
         <Route
           path="/random-card-prediction"
