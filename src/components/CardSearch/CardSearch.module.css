@@ -30,3 +30,24 @@
   border-radius: 4px;
   margin-bottom: 10px;
 }
+
+.suggestionsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  position: absolute; 
+  background-color: transparent;
+  z-index: 1000; 
+}
+
+.suggestionsList li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestionsList li:hover {
+  background-color: #f0f0f0; 
+}

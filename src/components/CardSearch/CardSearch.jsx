@@ -5,6 +5,7 @@ import css from "./CardSearch.module.css"; // Импорт стилей
 const CardSearch = ({ onCardFound, onSearchSubmit }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState("");
+  const [suggestions, setSuggestions] = useState([]); // Состояние для предложений
 
   const handleSearch = (e) => {
     e.preventDefault(); // Предотвращаем перезагрузку страницы
@@ -17,32 +18,41 @@ const CardSearch = ({ onCardFound, onSearchSubmit }) => {
 
     const term = searchTerm.toLowerCase();
 
-    const foundCard = cardData.cards.find((card) => {
+    // Находим все карты, соответствующие поисковому запросу
+    const foundCards = cardData.cards.filter((card) => {
       const cardName = card.name?.toLowerCase();
-      const cardDescription = card.description?.toLowerCase();
-      const cardKeywords =
-        card.keywords?.map((keyword) => keyword.toLowerCase()) || [];
-
-      return (
-        cardName?.includes(term) ||
-        cardDescription?.includes(term) ||
-        cardKeywords.some((keyword) => keyword.includes(term))
-      );
+      return cardName?.includes(term); // Проверяем только название карты
     });
 
-    if (!foundCard) {
+    if (foundCards.length === 0) {
       setError("No card found matching your search.");
     } else {
-      setError(""); // Очищаем ошибку, если карта найдена
+      setError(""); // Очищаем ошибку, если карты найдены
     }
 
-    onCardFound(foundCard || null); // Передаем найденную карту или null
-    onSearchSubmit(foundCard); // Осуществляем переход на страницу "card-meaning"
+    onCardFound(foundCards); // Передаем найденные карты
+    onSearchSubmit(foundCards); // Осуществляем переход на страницу "card-meaning"
   };
 
   const handleInputChange = (e) => {
-    setSearchTerm(e.target.value);
+    const value = e.target.value;
+    setSearchTerm(value);
     setError(""); // Очищаем ошибку при изменении ввода
+
+    // Обновляем предложения на основе ввода
+    if (value) {
+      const filteredSuggestions = cardData.cards
+        .filter((card) => card.name.toLowerCase().includes(value.toLowerCase()))
+        .map((card) => card.name); // Получаем только названия карт
+      setSuggestions(filteredSuggestions);
+    } else {
+      setSuggestions([]); // Очищаем предложения, если строка пустая
+    }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setSearchTerm(suggestion); // Устанавливаем выбранное предложение в строку поиска
+    setSuggestions([]); // Очищаем предложения
   };
 
   return (
@@ -57,6 +67,17 @@ const CardSearch = ({ onCardFound, onSearchSubmit }) => {
       <button type="submit" className={css.searchButton}>
         Search
       </button>
+
+      {/* Отображение предложений */}
+      {suggestions.length > 0 && (
+        <ul className={css.suggestionsList}>
+          {suggestions.map((suggestion, index) => (
+            <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
+              {suggestion}
+            </li>
+          ))}
+        </ul>
+      )}
 
       {/* Отображение ошибки, если карта не найдена */}
       {error && <div className={css.error}>{error}</div>}

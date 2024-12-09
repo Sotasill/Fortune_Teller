@@ -5,20 +5,22 @@ import Card from "../../components/Card/Card"; // Импортируем ком�
 import css from "./CardMeaning.module.css";
 import HeaderBar from "../HeaderBar/HeaderBar";
 import PageNavigation from "../../components/PageNavigation/PageNavigation";
+import Footer from "../../components/Footer/Footer";
+
 
 const CardMeaning = () => {
-  const [foundCard, setFoundCard] = useState(null); // Состояние для найденной карты
+  const [foundCards, setFoundCards] = useState([]); // Изменено на массив
   const location = useLocation(); // Получение переданных данных через navigate
 
   useEffect(() => {
-    // Проверяем, есть ли переданная карта в состоянии маршрута
-    if (location.state?.card) {
-      setFoundCard(location.state.card);
+    // Проверяем, есть ли переданные карты в состоянии маршрута
+    if (location.state?.cards) {
+      setFoundCards(location.state.cards);
     }
   }, [location]);
 
-  const handleCardFound = (card) => {
-    setFoundCard(card); // Обновляем состояние найденной карты
+  const handleCardFound = (cards) => {
+    setFoundCards(cards); // Обновляем состояние найденных карт
   };
 
   return (
@@ -27,20 +29,24 @@ const CardMeaning = () => {
       <PageNavigation />
       <div className={css.cardMeaningWrapper}>
         {/* Компонент поиска */}
-        <CardSearch onCardFound={handleCardFound} />
-        {/* Отображение найденной карты */}
-        {foundCard && (
-          <div className={css.cardDisplay}>
-            <Card card={foundCard} /> {/* Отображаем компонент карты */}
-          </div>
-        )}
-        {/* Если карта не найдена */}
-        {!foundCard && (
-          <p className={css.noCardMessage}>
-            No card found. Try searching for one!
-          </p>
-        )}
+        <CardSearch onCardFound={handleCardFound} onSearchSubmit={setFoundCards} />
+        {/* Отображение найденных карт */}
+        <div className={css.cardDisplayWrapper}>
+          {foundCards.length > 0 ? (
+            foundCards.map((card) => (
+              <div key={card.id} className={css.cardDisplay}>
+                <Card card={card} /> {/* Отображаем компонент карты */}
+              </div>
+            ))
+          ) : (
+            <p className={css.noCardMessage}>
+              No card found. Try searching for one!
+            </p>
+          )}
+        </div>
       </div>
+     
+      <Footer />
     </>
   );
 };

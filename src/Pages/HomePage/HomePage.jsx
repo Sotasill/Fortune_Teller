@@ -26,12 +26,12 @@ function HomePage() {
     setFoundCard(card); // Обновляем найденную карту
   };
 
-  const handleSearchSubmit = (card) => {
-    if (card) {
-      // Если карта найдена, переходим на страницу "card-meaning"
-      navigate("/card-meaning");
+  const handleSearchSubmit = (cards) => {
+    if (cards.length > 0) {
+      // Если карты найдены, переходим на страницу "card-meaning" с передачей найденных карт
+      navigate("/card-meaning", { state: { cards } });
     } else {
-      // Если карта не найдена, можно показать уведомление или оставить пользователя на той же странице
+      // Если карты не найдены, можно показать уведомление или оставить пользователя на той же странице
       alert("Card not found. Please try again.");
     }
   };
